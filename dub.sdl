@@ -1,0 +1,10 @@
+name "dsdl2"
+description "D-ish SDL bindings. Built using DerelictSDL2."
+authors "Jonathan Levi"
+copyright "Copyright © 2018, Jonathan Levi"
+license "BSL-2.0"
+
+targetType "none"
+subPackage "./window"
+////dependency "cst" version="~>1.0.2"
+////dependency "derelict-sdly" version="~>3.0.0-beta"
