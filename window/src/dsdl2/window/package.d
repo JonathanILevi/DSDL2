@@ -26,11 +26,52 @@ static this () {
 		writeln("SDL_Init: ", SDL_GetError());
 	}
 }
-/**	Shutdown SDL.  (Release memory, etc)*/
+/**	Release SDL.  (Release memory, etc)*/
 static ~this () {
 	"sdl ~this".writeln;
 	SDL_Quit();
 }
+
+
+
+
+
+
+
+
+
+class Window {
+	/**	Init Window with default position.
+	*/
+	this (string title, int[2] size) {
+		this(title, [SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED], size);
+	}
+	/**	Init Window with explicit position.
+	*/
+	this (string title, int[2] pos, int[2] size) {
+		title.writeln;
+
+		// Create a window
+		sdl_window = SDL_CreateWindow	(	title.toStringz	,
+				pos.x	,
+				pos.y	,
+				size.x	,
+				size.y	,
+				SDL_WINDOW_OPENGL	,
+			);
+	}
+	/**	Release Window.  (Release memory, etc)*/
+	~this () {
+		if (sdl_window !is null) {
+			SDL_DestroyWindow(sdl_window);
+		}
+	}
+	
+
+	SDL_Window* sdl_window;
+
+}
+
 
 
 
