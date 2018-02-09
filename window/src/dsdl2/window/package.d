@@ -12,9 +12,11 @@ module dsdl2.window;
 import std.stdio;
 
 
-import cst;
+import cst_;
+import xyz;
 
 import derelict.sdl2.sdl	;
+import std.string	: toStringz;
 
 
 
