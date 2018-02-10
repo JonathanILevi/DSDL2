@@ -22,76 +22,76 @@ misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 */
 
-module dsdl2.event;
+module dsdl2.event.event;
 
 struct  Event {
 	enum Type : uint {
-		UNKNOWN     = 0,     /**Was `UNUSED` in SDL*/
+		UNKNOWN     = 0,     /**	Was `UNUSED` in SDL*/
 
 		/* Application events */
-		QUIT           = 0x100, /**< User-requested quit */
+		QUIT           = 0x100,	/**	User-requested quit */
 
 		/* These application events have special meaning on iOS, see README-ios.md for details */
-		APP_TERMINATING,        /**< The application is being terminated by the OS
-		Called on iOS in applicationWillTerminate()
+		APP_TERMINATING,	/**	The application is being terminated by the OS
+				Called on iOS in applicationWillTerminate()
 		Called on Android in onDestroy()
 		*/
-		APP_LOW_MEMORY,          /**< The application is low on memory, free memory if possible.
-		Called on iOS in applicationDidReceiveMemoryWarning()
+		APP_LOW_MEMORY,	/**	The application is low on memory, free memory if possible.
+				Called on iOS in applicationDidReceiveMemoryWarning()
 		Called on Android in onLowMemory()
 		*/
-		APP_WILL_ENTER_BACKGROUND, /**< The application is about to enter the background
-		Called on iOS in applicationWillResignActive()
+		APP_WILL_ENTER_BACKGROUND,	/**	The application is about to enter the background
+				Called on iOS in applicationWillResignActive()
 		Called on Android in onPause()
 		*/
-		APP_DId_ENTER_BACKGROUND, /**< The application did enter the background and may not get CPU for some time
-		Called on iOS in applicationDidEnterBackground()
+		APP_DId_ENTER_BACKGROUND,	/**	The application did enter the background and may not get CPU for some time
+				Called on iOS in applicationDidEnterBackground()
 		Called on Android in onPause()
 		*/
-		APP_WILL_ENTER_FOREGROUND, /**< The application is about to enter the foreground
-		Called on iOS in applicationWillEnterForeground()
+		APP_WILL_ENTER_FOREGROUND,	/**	The application is about to enter the foreground
+				Called on iOS in applicationWillEnterForeground()
 		Called on Android in onResume()
 		*/
-		APP_DId_ENTER_FOREGROUND, /**< The application is now interactive
-		Called on iOS in applicationDidBecomeActive()
+		APP_DId_ENTER_FOREGROUND,	/**	The application is now interactive
+				Called on iOS in applicationDidBecomeActive()
 		Called on Android in onResume()
 		*/
 
 		/* Window events */
-		WINDOW_EVENT    = 0x200, /**< Window state change */
-		SYSWM_EVENT,             /**< System specific event */
+		WINDOW_EVENT    = 0x200,	/**	Window state change */
+		SYSWM_EVENT,	/**	System specific event */
 
 		/* Keyboard events */
-		KEY_DOWN        = 0x300, /**< Key pressed */
-		KEY_UP,                  /**< Key released */
-		TEXT_EDITING,            /**< Keyboard text editing (composition) */
-		TEXT_INPUT,              /**< Keyboard text input */
-		KEY_MAP_CHANGED,          /**< Keymap changed due to a system event such as an
-		input language or keyboard layout change.
+		KEY_DOWN        = 0x300,	/**	Key pressed */
+		KEY_UP,	/**	Key released */
+		TEXT_EDITING,	/**	Keyboard text editing (composition) */
+		TEXT_INPUT,	/**	Keyboard text input */
+		KEY_MAP_CHANGED,	/**	Keymap changed due to a system event such as an
+				input language or keyboard layout change.
 		*/
 
 		/* Mouse events */
-		MOUSE_MOTION    = 0x400, /**< Mouse moved */
-		MOUSE_BUTTON_DOWN,        /**< Mouse button pressed */
-		MOUSE_BUTTON_UP,          /**< Mouse button released */
-		MOUSE_WHEEL,             /**< Mouse wheel motion */
+		MOUSE_MOTION    = 0x400,	/**	Mouse moved */
+		MOUSE_BUTTON_DOWN,	/**	Mouse button pressed */
+		MOUSE_BUTTON_UP,	/**	Mouse button released */
+		MOUSE_WHEEL,	/**	Mouse wheel motion */
 
 		/* Joystick events */
-		JOY_AXIS_MOTION  = 0x600, /**< Joystick axis motion */
-		JOY_BALL_MOTION,          /**< Joystick trackball motion */
-		JOY_HAT_MOTION,           /**< Joystick hat position change */
-		JOY_BUTTON_DOWN,          /**< Joystick button pressed */
-		JOY_BUTTON_UP,            /**< Joystick button released */
-		JOY_DEVICE_ADDED,         /**< A new joystick has been inserted into the system */
-		JOY_DEVICE_REMOVED,       /**< An opened joystick has been removed */
+		JOY_AXIS_MOTION  = 0x600,	/**	Joystick axis motion */
+		JOY_BALL_MOTION,	/**	Joystick trackball motion */
+		JOY_HAT_MOTION,	/**	Joystick hat position change */
+		JOY_BUTTON_DOWN,	/**	Joystick button pressed */
+		JOY_BUTTON_UP,	/**	Joystick button released */
+		JOY_DEVICE_ADDED,	/**	A new joystick has been inserted into the system */
+		JOY_DEVICE_REMOVED,	/**	An opened joystick has been removed */
 
 		/* Game controller events */
-		CONTROLLER_AXIS_MOTION  = 0x650, /**< Game controller axis motion */
-		CONTROLLER_BUTTON_DOWN,          /**< Game controller button pressed */
-		CONTROLLER_BUTTON_UP,            /**< Game controller button released */
-		CONTROLLER_DEVICE_ADDED,         /**< A new Game controller has been inserted into the system */
-		CONTROLLER_DEVICE_REMOVED,       /**< An opened Game controller has been removed */
-		CONTROLLER_DEVICE_REMAPPED,      /**< The controller mapping was updated */
+		CONTROLLER_AXIS_MOTION  = 0x650,	/**	Game controller axis motion */
+		CONTROLLER_BUTTON_DOWN,	/**	Game controller button pressed */
+		CONTROLLER_BUTTON_UP,	/**	Game controller button released */
+		CONTROLLER_DEVICE_ADDED,	/**	A new Game controller has been inserted into the system */
+		CONTROLLER_DEVICE_REMOVED,	/**	An opened Game controller has been removed */
+		CONTROLLER_DEVICE_REMAPPED,	/**	The controller mapping was updated */
 
 		/* Touch events */
 		FINGER_DOWN      = 0x700,
@@ -104,21 +104,21 @@ struct  Event {
 		MULTIGESTURE,
 
 		/* Clipboard events */
-		CLIPBOARD__UPDATE = 0x900, /**< The clipboard changed */
+		CLIPBOARD__UPDATE = 0x900,	/**	The clipboard changed */
 
 		/* Drag and drop events */
-		DROP_FILE        = 0x1000, /**< The system requests a file open */
-		DROP_TEXT,                 /**< text/plain drag-and-drop event */
-		DROP_BEGIN,                /**< A new set of drops is beginning (NULL filename) */
-		DROP_COMPLETE,             /**< Current set of drops is now complete (NULL filename) */
+		DROP_FILE        = 0x1000,	/**	The system requests a file open */
+		DROP_TEXT,	/**	text/plain drag-and-drop event */
+		DROP_BEGIN,	/**	A new set of drops is beginning (NULL filename) */
+		DROP_COMPLETE,	/**	Current set of drops is now complete (NULL filename) */
 
 		/* Audio hotplug events */
-		AUDIO_DEVICE_ADDED = 0x1100, /**< A new audio device is available */
-		AUDIO_DEVICE_REMOVED,        /**< An audio device has been removed. */
+		AUDIO_DEVICE_ADDED = 0x1100,	/**	A new audio device is available */
+		AUDIO_DEVICE_REMOVED,	/**	An audio device has been removed. */
 
 		/* Render events */
-		RENDER_TARGETS_RESET = 0x2000, /**< The render targets have been reset and their contents need to be updated */
-		RENDER_DEVICE_RESET, /**< The device has been reset and all textures need to be recreated */
+		RENDER_TARGETS_RESET = 0x2000,	/**	The render targets have been reset and their contents need to be updated */
+		RENDER_DEVICE_RESET,	/**	The device has been reset and all textures need to be recreated */
 
 		/** Events ::USEREVENT through ::LASTEVENT are for your use,
 		*  and should be allocated with RegisterEvents()
@@ -133,12 +133,12 @@ struct  Event {
 	/**	Fields shared by every event
 	*/
 	uint type;
-	uint timestamp;   /**< In milliseconds, populated using GetTicks() */
+	uint timestamp;   /**	In milliseconds, populated using GetTicks() */
 
 	/**	Window state change event data (event.window.*)
 	*/
-	struct  WindowEvent	{	uint	windowId;	/**< The associated window	*/
-			Type	type;	/**< ::WindowEventId	*/
+	struct  WindowEvent	{	uint	windowId;	/**	The associated window	*/
+			Type	type;	/**	::WindowEventId	*/
 			union {
 				int[2]	pos	;
 				int[2]	size	;
@@ -175,24 +175,24 @@ struct  Event {
 	struct KeyEvent	{	uint	windowId;	/**	The window with keyboard focus, if any	*/
 			bool	pressed;	/**	PRESSED or RELEASED	*/
 			ubyte	repeat;	/**	Non-zero if this is a key repeat	*/
-			uint	scanCode;
-			uint	keyCode;
+			uint	scancode;
+			uint	keycode;
 			ushort	mod;
 		}
 
-	/**	Keyboard text editing event struct ure (event.edit.*)
-	*/
-	struct TextEditingEvent	{	uint windowId;	/**	The window with keyboard focus, if any	*/
-			char text[TEXTEDITINGEVENT_TEXT_SIZE];	/**	The editing text	*/
-			int start;	/**	The start cursor of selected editing text	*/
-			int length;	/**	The length of selected editing text	*/
-		}
+	/////**	Keyboard text editing event struct ure (event.edit.*)
+	////*/
+	////struct TextEditingEvent	{	uint windowId;	/**	The window with keyboard focus, if any	*/
+	////        char text[TEXTEDITINGEVENT_TEXT_SIZE];	/**	The editing text	*/
+	////        int start;	/**	The start cursor of selected editing text	*/
+	////        int length;	/**	The length of selected editing text	*/
+	////    }
 
-	/**	Keyboard text input event struct ure (event.text.*)
-	*/
-	struct TextInputEvent	{	uint windowId;	/**	The window with keyboard focus, if any	*/
-			char text[TEXTINPUTEVENT_TEXT_SIZE];	/**	The input text	*/
-		}
+	/////**	Keyboard text input event struct ure (event.text.*)
+	////*/
+	////struct TextInputEvent	{	uint windowId;	/**	The window with keyboard focus, if any	*/
+	////        char text[TEXTINPUTEVENT_TEXT_SIZE];	/**	The input text	*/
+	////    }
 
 	/**	Mouse motion event struct ure (event.motion.*)
 	*/
@@ -200,7 +200,7 @@ struct  Event {
 			uint which;	/**	The mouse instance id, or TOUCH_MOUSEId	*/
 			uint state;	/**	The current button state	*/
 			int[2] pos;	/**	Mouse position relative to window	*/
-			int[2] rel	/**	The relative motion	*/
+			int[2] rel;	/**	The relative motion	*/
 		}
 
 	/**	Mouse button event struct ure (event.button.*)
@@ -343,34 +343,34 @@ struct  Event {
 	////    note: If you want to use this event, you should include syswm.h.
 	////*/
 	////struct SysWMEvent	{	SysWMmsg *msg;	/**	driver dependent data, defined in syswm.h	*/
-		}
+	////	}
 	
 	/**	General event struct ure
 	*/
 	union {
-		QuitEvent quit;	/**< Quit request event data */
-		WindowEvent window;	/**< Window event data */
-		KeyboardEvent key;	/**< Keyboard event data */
-		TextEditingEvent textEditing;	/**< Text editing event data */
-		TextInputEvent textInput;	/**< Text input event data */
-		MouseMotionEvent mouseMotion;	/**< Mouse motion event data */
-		MouseButtonEvent mouseButton;	/**< Mouse button event data */
-		MouseWheelEvent mouseWheel;	/**< Mouse wheel event data */
-		////JoyAxisEvent jaxis;	/**< Joystick axis event data */
-		////JoyBallEvent jball;	/**< Joystick ball event data */
-		////JoyHatEvent jhat;	/**< Joystick hat event data */
-		////JoyButtonEvent jbutton;	/**< Joystick button event data */
-		////JoyDeviceEvent jdevice;	/**< Joystick device change event data */
-		////ControllerAxisEvent caxis;	/**< Game Controller axis event data */
-		////ControllerButtonEvent cbutton;	/**< Game Controller button event data */
-		////ControllerDeviceEvent cdevice;	/**< Game Controller device event data */
-		////AudioDeviceEvent adevice;	/**< Audio device event data */
-		////UserEvent user;	/**< Custom event data */
-		////SysWMEvent syswm;	/**< System dependent window event data */
-		////TouchFingerEvent tfinger;	/**< Touch finger event data */
-		////MultiGestureEvent mgesture;	/**< Gesture event data */
-		////DollarGestureEvent dgesture;	/**< Gesture event data */
-		////DropEvent drop;	/**< Drag and drop event data */
+		QuitEvent quit;	/**	Quit request event data */
+		WindowEvent window;	/**	Window event data */
+		KeyEvent key;	/**	Keyboard event data */
+		////TextEditingEvent textEditing;	/**	Text editing event data */
+		////TextInputEvent textInput;	/**	Text input event data */
+		MouseMotionEvent mouseMotion;	/**	Mouse motion event data */
+		MouseButtonEvent mouseButton;	/**	Mouse button event data */
+		MouseWheelEvent mouseWheel;	/**	Mouse wheel event data */
+		////JoyAxisEvent jaxis;	/**	Joystick axis event data */
+		////JoyBallEvent jball;	/**	Joystick ball event data */
+		////JoyHatEvent jhat;	/**	Joystick hat event data */
+		////JoyButtonEvent jbutton;	/**	Joystick button event data */
+		////JoyDeviceEvent jdevice;	/**	Joystick device change event data */
+		////ControllerAxisEvent caxis;	/**	Game Controller axis event data */
+		////ControllerButtonEvent cbutton;	/**	Game Controller button event data */
+		////ControllerDeviceEvent cdevice;	/**	Game Controller device event data */
+		////AudioDeviceEvent adevice;	/**	Audio device event data */
+		////UserEvent user;	/**	Custom event data */
+		////SysWMEvent syswm;	/**	System dependent window event data */
+		////TouchFingerEvent tfinger;	/**	Touch finger event data */
+		////MultiGestureEvent mgesture;	/**	Gesture event data */
+		////DollarGestureEvent dgesture;	/**	Gesture event data */
+		////DropEvent drop;	/**	Drag and drop event data */
 	}
 
 }
