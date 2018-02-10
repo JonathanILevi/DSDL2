@@ -15,7 +15,24 @@ import std.stdio;
 import cst_;
 
 
-import dsdl2.window	;
+////import dsdl2.window	;
 import derelict.sdl2.sdl	;
 import std.string	: toStringz;
+
+
+public import	dsdl2.event.event	;
+public import	dsdl2.event.eventQueue	;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
